@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toffee - Your Budget Manager</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="shortcut icon" href="/assets/logo.svg" type="image/x-icon" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script>
+      let fnd = parseInt("<%= totals["foodAndDrink"] %>");
+      let life = parseInt("<%= totals["lifestyle"] %>");
+      let ent = parseInt("<%= totals["entertainment"] %>");
+      let util = parseInt("<%= totals["utilities"] %>");
+      let home = parseInt("<%= totals["home"] %>");
+      let trans = parseInt("<%= totals["transportation"] %>");
+      let misc = parseInt("<%= totals["misc"] %>");
+    </script>
+  </head>
+  <nav>
+    <img src="/assets/logo.svg" />
+  </nav>
+  <body>
+    <div class="spacing"></div>
+    <div class="body-contain">
+      <div
+        class="button-back"
+        onclick="location.href='./';"
+        style="cursor: pointer"
+      >
+        <i class="ph-bold ph-arrow-left"></i>
+        <p>back to home</p>
+      </div>
+      <div class="title-2">insights</div>
+      <div class="divider"></div>
+      <!-- <div class="selectors">
+        <select name="category" id="category">
+          <option value="none" selected disabled hidden>
+            select a category
+          </option>
+          <option value="food">food & drinks</option>
+          <option value="entertainment">entertainment</option>
+          <option value="utilities">utilities</option>
+          <option value="home">home</option>
+          <option value="lifestyle">lifestyle</option>
+          <option value="transportation">transportation</option>
+          <option value="miscellaneous">miscellaneous</option>
+        </select>
+        <select name="time" id="time">
+          <option value="free">this month</option>
+          <option value="starter">this week</option>
+          <option value="professional">today</option>
+        </select>
+      </div>
+      <div class="divider"></div> -->
+      <div class="total-sum">
+        <div class="inr-symbol">₹</div>
+        <div class="amount"><%= totals["total"] %></div>
+      </div>
+      <p>spent this month</p>
+      <div id="pie"></div>
+      <div id="column"></div>
+    </div>
+    <script src="/js/category.js"></script>
+  </body>
+</html>
