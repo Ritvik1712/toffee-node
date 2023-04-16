@@ -16,6 +16,6 @@ You can leave the filtering button for now, i think we won't really need it anyw
 
 The HTML pages (with the extension `.ejs`) are in the folder `views/`
 
-The JasaScript, css, and asset files are in the folder `public/`
+The corresponding JavaScript, css, and asset files are in the folder `public/`
 
 > do **NOT** change the structure of the code, the files work only if they are in the corresponding folders
