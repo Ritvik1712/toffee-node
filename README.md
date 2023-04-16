@@ -1,4 +1,4 @@
-## start the server:
+## Start the server:
 
 1. Open a terminal in this folder
 2. Run the command `npm run start:dev`
