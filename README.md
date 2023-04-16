@@ -15,6 +15,7 @@ You can leave the filtering button for now, i think we won't really need it anyw
 ## Structure of the code
 
 The HTML `.ejs` pages are in the folder `views/`
+
 The JasaScript, css, and asset files are in the folder `public/`
 
-> do **not** change the structure of the code, the files work only if they are in the corresponding folders
+> do **NOT** change the structure of the code, the files work only if they are in the corresponding folders
