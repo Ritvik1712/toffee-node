@@ -74,31 +74,48 @@
         </tr>
         <tr>
           <th class="categories">Food and Drinks</th>
-          <th class="tableAmount"><%= totals["foodAndDrink"] %></th>
+          <th class="tableAmount">
+            <%= totals["foodAndDrink"].toLocaleString('en', {useGrouping:true})
+            %>
+          </th>
         </tr>
         <tr>
           <th class="categories">Lifestyle</th>
-          <th class="tableAmount"><%= totals["lifestyle"] %></th>
+          <th class="tableAmount">
+            <%= totals["lifestyle"].toLocaleString('en', {useGrouping:true}) %>
+          </th>
         </tr>
         <tr>
           <th class="categories">Entertainment</th>
-          <th class="tableAmount"><%= totals["entertainment"] %></th>
+          <th class="tableAmount">
+            <%= totals["entertainment"].toLocaleString('en', {useGrouping:true})
+            %>
+          </th>
         </tr>
         <tr>
           <th class="categories">Utilities</th>
-          <th class="tableAmount"><%= totals["utilities"] %></th>
+          <th class="tableAmount">
+            <%= totals["utilities"].toLocaleString('en', {useGrouping:true}) %>
+          </th>
         </tr>
         <tr>
           <th class="categories">Home</th>
-          <th class="tableAmount"><%= totals["home"] %></th>
+          <th class="tableAmount">
+            <%= totals["home"].toLocaleString('en', {useGrouping:true}) %>
+          </th>
         </tr>
         <tr>
           <th class="categories">Transportation</th>
-          <th class="tableAmount"><%= totals["transportation"] %></th>
+          <th class="tableAmount">
+            <%= totals["transportation"].toLocaleString('en',
+            {useGrouping:true}) %>
+          </th>
         </tr>
         <tr>
           <th class="categories">Miscellaneous</th>
-          <th class="tableAmount"><%= totals["misc"] %></th>
+          <th class="tableAmount">
+            <%= totals["misc"].toLocaleString('en', {useGrouping:true}) %>
+          </th>
         </tr>
       </table>
       <div id="pie"></div>
