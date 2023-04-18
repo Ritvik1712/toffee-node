@@ -62,19 +62,20 @@ app.get("/:name", (req, res) => {
         `Fetched ${transactions.length} transactions for ${username}`
       );
       transactions = transactions.sort(function compareFunction(a, b) {
-        return a.createdAt - b.createdAt;
+        return b.createdAt - a.createdAt;
       });
 
       let total = 0;
       transactions.forEach((item) => {
         total += item.amount;
-        console.log(item.createdAt);
+        // console.log(item.createdAt);
       });
 
       res.render("home", {
         username: username,
         transactions: transactions,
         total: total,
+        selection: ["all", "all"],
       });
     })
     .catch((err) => console.error(err));
@@ -221,9 +222,100 @@ app.get(
   }
 );
 
-app.post("/", (req, res) => {
-  console.log("Got body:", req.body);
-  res.sendStatus(200);
+app.post("/:name", (req, res) => {
+  console.log(req.body);
+
+  username = req.params.name;
+  category = req.body.category;
+  categoryOriginal = req.body.category;
+  if (category == "food") {
+    category = "foodAndDrink";
+  } else if (category == "miscellaneous") {
+    category = "Miscellaneous";
+  }
+  time = req.body.time;
+  end = new Date();
+  start = new Date();
+  now = new Date();
+
+  transactions = [];
+  total = 0;
+
+  if (time == "all") {
+    start = new Date(1972);
+    end = new Date();
+  } else if (time == "month") {
+    start.setDate(now.getDate() - 30);
+    console.log(`tvstvs ${start.valueOf() / 1000}`);
+  } else if (time == "week") {
+    start.setDate(now.getDate() - 7);
+    console.log(`tvstvs ${start.valueOf() / 1000}`);
+  } else {
+    start.setDate(now.getDate() - 1);
+    console.log(`tvstvs ${start.valueOf() / 1000}`);
+  }
+
+  console.log(Math.floor(start.valueOf() / 1000));
+  console.log(Math.floor(end.valueOf() / 1000));
+  console.log(Math.floor(Date.now() / 1000));
+
+  if (category == "all") {
+    console.log("SHOWING ALL CATEGORIES");
+    Transaction.find({ username: username })
+      .where("createdAt")
+      .gt(Math.floor(start.valueOf() / 1000))
+      .lt(Math.floor(end.valueOf() / 1000))
+      .then((transactions) => {
+        console.log(
+          `Fetched ${transactions.length} transactions for ${username}`
+        );
+        transactions = transactions.sort(function compareFunction(a, b) {
+          return b.createdAt - a.createdAt;
+        });
+
+        let total = 0;
+        transactions.forEach((item) => {
+          total += item.amount;
+          // console.log(item.createdAt);
+        });
+        res.render("home", {
+          username: username,
+          transactions: transactions,
+          total: total,
+          selection: [categoryOriginal, time],
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  } else {
+    Transaction.find({ username: username, category: category })
+      .where("createdAt")
+      .gt(Math.floor(start.valueOf() / 1000))
+      .lt(Math.floor(end.valueOf() / 1000))
+      .then((transactions) => {
+        console.log(
+          `Fetched ${transactions.length} transactions for ${username}`
+        );
+        transactions = transactions.sort(function compareFunction(a, b) {
+          return b.createdAt - a.createdAt;
+        });
+
+        let total = 0;
+        transactions.forEach((item) => {
+          total += item.amount;
+        });
+        res.render("home", {
+          username: username,
+          transactions: transactions,
+          total: total,
+          selection: [categoryOriginal, time],
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 });
 
 server.listen(process.env.PORT || 3000, () => {

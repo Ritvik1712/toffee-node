@@ -135,6 +135,17 @@ select {
   font-weight: 500;
 }
 
+.selector-display {
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.purple {
+  font-weight: 600;
+  color: var(--blue);
+}
+
 tr {
   background-color: var(--grey-bg);
 }

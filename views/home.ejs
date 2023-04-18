@@ -11,6 +11,7 @@
     <script src="https://unpkg.com/phosphor-icons"></script>
     <script>
       let USERNAME = "<%= username %>";
+      let SELECTION = <%- JSON.stringify(selection) %>;
     </script>
   </head>
   <nav>
@@ -34,8 +35,8 @@
       </script>
       <div class="title">My Total Expenditure</div>
       <div class="selectors">
-        <form action="/" method="POST">
-          <select name="category" id="category">
+        <form action="/<%= username %>" method="POST">
+          <select class="selector-category" name="category" id="category">
             <option value="none" selected disabled hidden>
               select a category
             </option>
@@ -49,7 +50,7 @@
             <option value="miscellaneous">Miscellaneous</option>
           </select>
 
-          <select name="time" id="time">
+          <select class="selector-time" name="time" id="time">
             <option value="all">All Time</option>
             <option value="month">This Month</option>
             <option value="week">This Week</option>
@@ -64,6 +65,17 @@
         <div class="amount">
           <%= total.toLocaleString('en', {useGrouping:true}) %>
         </div>
+      </div>
+      <div class="selector-display">
+        Category: <span class="purple"><%= selection[0]%></span><br />
+        <% if (selection[1] == "all") { %> Duration:
+        <span class="purple">All Time</span> <% } %> <% if(selection[1] ==
+        "month") { %> Duration: <span class="purple">This Month</span> <% } %>
+        <% if (selection[1] == "week") { %> Duration:
+        <span class="purple">This Week </span> <% } %> <% if (selection[1] ==
+        "today") { %> Duration:
+        <span class="purple">Today</span>
+        <% } %>
       </div>
       <div
         class="category-button"
@@ -104,74 +116,3 @@
     src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
   ></script>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Toffee - Your Budget Manager</title>
-    <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/nav.css" />
-    <link rel="shortcut icon" href="/assets/logo.svg" type="image/x-icon" />
-    <script src="https://unpkg.com/phosphor-icons"></script>
-    <script src="/js/home.js"></script>
-  </head>
-  <nav>
-    <img src="/assets/logo.svg" />
-  </nav>
-  <body>
-    <div class="spacing"></div>
-    <div class="body-contain">
-      <div class="title">my total expenditure</div>
-      <div class="selectors">
-        <select name="category" id="category">
-          <option value="none" selected disabled hidden>
-            select a category
-          </option>
-          <option value="food">food & drinks</option>
-          <option value="entertainment">entertainment</option>
-          <option value="utilities">utilities</option>
-          <option value="home">home</option>
-          <option value="lifestyle">lifestyle</option>
-          <option value="transportation">transportation</option>
-          <option value="miscellaneous">miscellaneous</option>
-        </select>
-
-        <select name="time" id="time">
-          <option value="free">this month</option>
-          <option value="starter">this week</option>
-          <option value="professional">today</option>
-        </select>
-      </div>
-      <div class="divider"></div>
-      <div class="total-sum">
-        <div class="inr-symbol">₹</div>
-        <div class="amount"><%= total %></div>
-      </div>
-      <div class="category-button">
-        <i class="ph-bold ph-chart-pie"></i>
-        <p>see how I spent it</p>
-      </div>
-      <% mapping = { foodAndDrink: "Food and Drink", entertainment:
-      "Entertainment", utilities: "Utilities", transportation: "Transportation",
-      home: "Home", lifestyle: "Lifestyle", misc: "Miscellaneous", }; %>
-      <table class="transaction-table">
-        <tr class="header-row">
-          <th>Date</th>
-          <th>Category</th>
-          <th>Amount</th>
-        </tr>
-        <% transactions.forEach(item => { %>
-        <tr>
-          <% const date = new Date(item.createdAt) %>
-          <th><%= date.toLocaleString() %></th>
-          <th><%= mapping[item.category] %></th>
-          <th><%= item.amount %></th>
-        </tr>
-        <% }) %>
-      </table>
-    </div>
-  </body>
-</html> -->

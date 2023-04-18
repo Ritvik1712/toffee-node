@@ -123,6 +123,8 @@ function drawBasic() {
 
 let btn = document.querySelector("#translate-btn");
 let translate = document.querySelector("#google_translate_element");
+translate.style.display = "none";
+
 btn.addEventListener("click", () => {
   console.log("yeettt");
   if (translate.style.display == "none") translate.style.display = "inline";
