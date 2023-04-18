@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  padding: 0px;
+  font-family: "Rubik", sans-serif;
+}
+
+:root {
+  --theme-light: #f1f1f9;
+
+  --blue: #6767fd;
+  --pink: #fc466d;
+  --yellow: #ffd82b;
+  --green: #64ffa2;
+
+  --dark-bg: rgb(22, 22, 22);
+  --light-bg: #ffffff;
+  --grey-bg: #f4f4f5;
+
+  --text: #7a7a8c;
+  --text-dark: #282831;
+  --text-med: #636363;
+
+  --text-light: #c7c7d7;
+  --text-vlight: #fffffb;
+
+  --easing: cubic-bezier(0.68, 0.28, 0.82, 0.64);
+  --easing-slick: cubic-bezier(0.02, 0.98, 0.65, 1.15);
+}
+
+body {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255, 1),
+    rgb(255, 255, 255),
+    rgba(226, 224, 255),
+    rgb(204, 201, 255),
+    rgb(169, 164, 254),
+    rgb(133, 126, 255)
+  );
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 72px;
+  position: fixed;
+}
+
+.nav-contain {
+  width: 90%;
+  margin: auto;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav img {
+  height: 36px;
+}
+
+.spacing {
+  height: 250px;
+}
+
+.cta {
+  padding: 16px;
+  background-color: var(--blue);
+  border-radius: 8px;
+  color: white;
+  max-width: 200px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.body-contain {
+  width: 90%;
+  margin: auto;
+  max-width: 1100px;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+#toffee {
+  color: var(--blue);
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 1.2rem;
+  opacity: 0.5;
+  margin-top: 36px;
+}
+
+#cta {
+  margin-top: 84px;
+  font-size: 1.5rem;
+}
+
+.hero {
+  width: 100%;
+  margin-top: 120px;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.footer {
+  margin-top: 180px;
+  margin-bottom: 120px;
+  width: 100%;
+  max-width: 600px;
+  line-height: 1.5;
+  color: white;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+  .spacing {
+    height: 180px;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  #toffee {
+    color: var(--blue);
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    margin-top: 36px;
+  }
+}
