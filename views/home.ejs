@@ -16,35 +16,43 @@
   </head>
   <nav>
     <img src="/assets/logo.svg" />
+    <h1>Toffee</h1>
   </nav>
   <body>
     <div class="spacing"></div>
     <div class="body-contain">
-      <div class="title">my total expenditure</div>
+      <div class="title">My Total Expenditure</div>
       <div class="selectors">
-        <select name="category" id="category">
-          <option value="none" selected disabled hidden>
-            select a category
-          </option>
-          <option value="food">food & drinks</option>
-          <option value="entertainment">entertainment</option>
-          <option value="utilities">utilities</option>
-          <option value="home">home</option>
-          <option value="lifestyle">lifestyle</option>
-          <option value="transportation">transportation</option>
-          <option value="miscellaneous">miscellaneous</option>
-        </select>
+        <form action="/" method="POST">
+          <select name="category" id="category">
+            <option value="none" selected disabled hidden>
+              select a category
+            </option>
+            <option value="all" selected="selected">All Categories</option>
+            <option value="food">Food & Drinks</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="utilities">Utilities</option>
+            <option value="home">Home</option>
+            <option value="lifestyle">Lifestyle</option>
+            <option value="transportation">Transportation</option>
+            <option value="miscellaneous">Miscellaneous</option>
+          </select>
 
-        <select name="time" id="time">
-          <option value="free">this month</option>
-          <option value="starter">this week</option>
-          <option value="professional">today</option>
-        </select>
+          <select name="time" id="time">
+            <option value="all">All Time</option>
+            <option value="month">This Month</option>
+            <option value="week">This Week</option>
+            <option value="today">Today</option>
+          </select>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
       <div class="divider"></div>
       <div class="total-sum">
         <div class="inr-symbol">₹</div>
-        <div class="amount"><%= total %></div>
+        <div class="amount">
+          <%= total.toLocaleString('en', {useGrouping:true}) %>
+        </div>
       </div>
       <div
         class="category-button"
@@ -61,15 +69,19 @@
       <table class="transaction-table">
         <tr class="header-row">
           <th>Date</th>
+          <th>Transaction</th>
           <th>Category</th>
           <th>Amount</th>
         </tr>
         <% transactions.forEach(item => { %>
         <tr>
           <% const date = new Date(item.createdAt*1000) %>
-          <th><%= date.toLocaleString() %></th>
+          <th class="date"><%= date.toLocaleString() %></th>
+          <th class="transaction"><%= item.message %></th>
           <th><%= mapping[item.category] %></th>
-          <th><%= item.amount %></th>
+          <th class="tableAmount">
+            <%= item.amount.toLocaleString('en', {useGrouping:true}) %>
+          </th>
         </tr>
         <% }) %>
       </table>

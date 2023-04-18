@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 const transactionSchema = new mongoose.Schema({
   username: {
-    type: Number,
+    type: String,
     required: true,
   },
   amount: {
@@ -16,6 +16,10 @@ const transactionSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Number,
+    required: true,
+  },
+  message: {
+    type: String,
     required: true,
   },
 });

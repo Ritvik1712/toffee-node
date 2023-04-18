@@ -53,59 +53,31 @@ app.get("/:name", (req, res) => {
     category = false;
   }
 
-  if (category) {
-    Transaction.find({ username: username, category: category })
-      .where("createdAt")
-      .gte(start)
-      .lte(end)
-      .then((transactions) => {
-        console.log(
-          `Fetched ${transactions.length} transactions for ${username}`
-        );
-        transactions = transactions.sort(function compareFunction(a, b) {
-          return a.createdAt - b.createdAt;
-        });
+  Transaction.find({ username: username })
+    .where("createdAt")
+    .gt(start)
+    .lt(end)
+    .then((transactions) => {
+      console.log(
+        `Fetched ${transactions.length} transactions for ${username}`
+      );
+      transactions = transactions.sort(function compareFunction(a, b) {
+        return a.createdAt - b.createdAt;
+      });
 
-        let total = 0;
-        transactions.forEach((item) => {
-          total += item.amount;
-          // console.log(item.createdAt);
-        });
+      let total = 0;
+      transactions.forEach((item) => {
+        total += item.amount;
+        console.log(item.createdAt);
+      });
 
-        res.render("home", {
-          username: username,
-          transactions: transactions,
-          total: total,
-        });
-      })
-      .catch((err) => console.error(err));
-  } else {
-    Transaction.find({ username: username })
-      .where("createdAt")
-      .gt(start)
-      .lt(end)
-      .then((transactions) => {
-        console.log(
-          `Fetched ${transactions.length} transactions for ${username}`
-        );
-        transactions = transactions.sort(function compareFunction(a, b) {
-          return a.createdAt - b.createdAt;
-        });
-
-        let total = 0;
-        transactions.forEach((item) => {
-          total += item.amount;
-          console.log(item.createdAt);
-        });
-
-        res.render("home", {
-          username: username,
-          transactions: transactions,
-          total: total,
-        });
-      })
-      .catch((err) => console.error(err));
-  }
+      res.render("home", {
+        username: username,
+        transactions: transactions,
+        total: total,
+      });
+    })
+    .catch((err) => console.error(err));
 });
 
 app.get("/:name/category", (req, res) => {
@@ -248,6 +220,11 @@ app.get(
       .catch((err) => console.error(err));
   }
 );
+
+app.post("/", (req, res) => {
+  console.log("Got body:", req.body);
+  res.sendStatus(200);
+});
 
 server.listen(process.env.PORT || 3000, () => {
   console.log(`Listening on port ${port}`);

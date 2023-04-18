@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  chatID: {
+    type: String,
+    required: true,
+  },
 });
 
 const User = mongoose.model("user", userSchema);

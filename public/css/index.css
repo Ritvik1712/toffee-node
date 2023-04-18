@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
 
 * {
   margin: 0px;
   box-sizing: border-box;
   scroll-behavior: smooth;
   padding: 0px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 :root {
@@ -17,8 +18,8 @@
   --green: #64ffa2;
 
   --dark-bg: rgb(22, 22, 22);
-  --light-bg: #ffffff;
-  --grey-bg: #f4f4f5;
+  --light-bg: #fef9ff;
+  --grey-bg: #00000006;
 
   --text: #7a7a8c;
   --text-dark: #282831;
@@ -45,6 +46,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 16px;
+  margin-bottom: 50px;
 }
 
 .title {
@@ -61,7 +63,7 @@
 }
 
 select {
-  margin: 16px;
+  margin: 16px 10px;
   min-width: 180px;
   min-height: 36px;
   font-size: 1.1rem;
@@ -106,7 +108,7 @@ select {
   background-color: var(--blue);
   font-size: 1.5rem;
   border-radius: 16px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 32px;
 }
 
@@ -115,13 +117,37 @@ select {
   font-size: 2rem;
 }
 
+.date {
+  color: #939393;
+  /* font-style: italic; */
+}
+
+.transaction {
+  text-transform: capitalize;
+}
+
+.tableAmount {
+  color: #6767fd;
+  font-weight:500;
+}
+
+.categories {
+  font-weight: 500;
+}
+
 tr {
   background-color: var(--grey-bg);
 }
 
 .header-row {
-  background-color: #ffffff;
+  background-color: white;
   border-radius: 16px 16px 0px 0px;
+  font-weight: 600;
+  /* color: white; */
+}
+
+.header-row th{
+  font-weight: 600;
 }
 
 table {
@@ -145,14 +171,28 @@ td {
 
 th {
   padding: 12px;
-  border-radius: 12px;
+  border-radius: 8px;
   margin: 2px;
+  font-weight: 400;
 }
 
 p {
   font-size: 1.2rem;
   color: var(--text-dark);
   font-weight: 500;
+}
+
+form input {
+  padding: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #6767FD;
+  color: white;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  margin: 0px 10px;
 }
 
 .button-back {
@@ -187,7 +227,8 @@ p {
 
 #column {
   width: 100%;
-  height: 300px;
+  /* min-height: 500px; */
+  /* height: auto; */
   border-radius: 12px;
   margin-top: 48px;
 }

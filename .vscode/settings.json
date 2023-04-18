@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/6430dd4a-84f4-4edf-a304-ae51b2306eb9/resourceGroups/toffeeAsia/providers/Microsoft.Web/sites/toffee",
+  "appService.deploySubpath": "."
+}
