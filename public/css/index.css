@@ -232,3 +232,9 @@ form input {
   border-radius: 12px;
   margin-top: 48px;
 }
+
+#google_translate_element {
+  margin-bottom: 20px;
+  font-size: small;
+  display: none;
+}

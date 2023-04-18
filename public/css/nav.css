@@ -11,7 +11,7 @@ nav {
   z-index: 100;
 }
 
-nav img {
+.toffee-logo {
   /* margin-top: 10px; */
   height: 50px;
   margin-right: 10px;
@@ -19,4 +19,19 @@ nav img {
 
 nav h1 {
   font-size: xx-large;
+}
+
+#translate-btn {
+  margin-left: 70px;
+  border: none;
+  background-color: #babaff;
+  border-radius: 100px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#translate-btn img {
+  margin: auto;
+  width: 32px;
+  height: 32px;
 }

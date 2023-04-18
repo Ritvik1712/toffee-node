@@ -120,3 +120,11 @@ function drawBasic() {
 
   chart.draw(data, options);
 }
+
+let btn = document.querySelector("#translate-btn");
+let translate = document.querySelector("#google_translate_element");
+btn.addEventListener("click", () => {
+  console.log("yeettt");
+  if (translate.style.display == "none") translate.style.display = "inline";
+  else translate.style.display = "none";
+});

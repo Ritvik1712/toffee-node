@@ -17,3 +17,11 @@ function goToCategory(username) {
   console.log(username);
   window.location.replace(`/${username}/category`);
 }
+
+let btn = document.querySelector("#translate-btn");
+let translate = document.querySelector("#google_translate_element");
+btn.addEventListener("click", () => {
+  console.log("yeettt");
+  if (translate.style.display == "none") translate.style.display = "inline";
+  else translate.style.display = "none";
+});
